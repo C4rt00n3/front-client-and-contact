@@ -1,0 +1,18 @@
+const Color = {
+  title: "light",
+
+  colors: {
+    totalBlack: "#000",
+    grey100: "#1B1B1B",
+    grey25: "#464545",
+    grey50: "#2F2F2F",
+    grey: "#ABABAB",
+    withe: "#F5F5F5",
+    totalWithe: "#FFFF",
+    green: "#2EF552",
+    blue: "#00D1FF",
+    colorbrand1: "##623CEA",
+  },
+};
+
+export default Color;
