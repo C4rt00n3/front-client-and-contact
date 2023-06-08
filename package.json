@@ -12,7 +12,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
     "@types/react-icons": "^3.0.0",
-    "@types/yup": "^0.32.0",
     "axios": "^1.4.0",
     "framer-motion": "^10.12.16",
     "react": "^18.2.0",
