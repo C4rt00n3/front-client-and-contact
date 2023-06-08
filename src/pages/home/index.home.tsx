@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Nav from "../../components/Nav/index.nav";
 import CardClients from "./components/CardClients/index.cards";
 import InputSeach from "./components/InputSeach/index.input";

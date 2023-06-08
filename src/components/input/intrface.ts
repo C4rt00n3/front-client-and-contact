@@ -1,5 +1,4 @@
 import { HTMLInputTypeAttribute } from "react";
-import { FieldErrors, FieldValues } from "react-hook-form";
 
 export default interface iInput {
   htmlFor?: string;
