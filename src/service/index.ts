@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Url = "http://localhost:3000";
+const Url = "https://client-and-contat.onrender.com";
 
 export const api = axios.create({
   baseURL: Url,

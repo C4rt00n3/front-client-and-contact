@@ -68,7 +68,6 @@ const ModalContact = ({
 
   const create = async (data: any) => {
     data.client_id = idClient;
-    console.log(data);
     try {
       const request: AxiosResponse<iContacts> = await api.post(
         "/contact",
@@ -79,8 +78,6 @@ const ModalContact = ({
           },
         }
       );
-
-      console.log(request);
 
       setContacts((e) => [request.data, ...e]);
 
