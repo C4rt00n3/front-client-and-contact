@@ -1,14 +1,6 @@
 import iInput from "./intrface";
 
-const Input = ({
-  htmlFor,
-  label,
-  placeholder,
-  type,
-  func,
-  schema,
-  name,
-}: iInput) => {
+const Input = ({ htmlFor, label, placeholder, type, schema, name }: iInput) => {
   return (
     <>
       {label == "" ? <></> : <label htmlFor={htmlFor}>{label}</label>}

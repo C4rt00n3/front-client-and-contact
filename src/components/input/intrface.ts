@@ -7,7 +7,6 @@ export default interface iInput {
   placeholder?: string;
   type: HTMLInputTypeAttribute | undefined;
   value?: string;
-  func?: () => void;
   schema?: any;
   name?: string;
 }
