@@ -1,8 +1,9 @@
+import { z } from "zod";
 import iInput from "./intrface";
 
 const TextArea = ({
   htmlFor,
-  value,
+  children,
   label,
   placeholder,
   func,
@@ -21,7 +22,7 @@ const TextArea = ({
         name={name}
         placeholder={placeholder}
       >
-        {value}
+        {children}
       </textarea>
     </>
   );

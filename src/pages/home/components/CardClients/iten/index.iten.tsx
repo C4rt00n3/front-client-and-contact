@@ -10,9 +10,9 @@ import {
 import { AuthContext } from "../../../../../context/authContext/index.context";
 import { api } from "../../../../../service";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import ModalContact from "../../../../../components/ModalContact/index.modal";
-import ModalClient from "../../../../../components/ModalClient/index.modal";
-import ModalContactEdit from "../../../../../components/ModalContactEdit/index.modal";
+import ModalContact from "../../../../../components/Modals/Contacts/ModalContact/index.modal";
+import ModalClient from "../../../../../components/Modals/Clients/ModalClient/index.modal";
+import ModalContactEdit from "../../../../../components/Modals/Contacts/ModalContactEdit/index.modal";
 import { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 
@@ -125,7 +125,7 @@ const Iten = ({ element }: { element: iClients }) => {
                 editar
               </motion.button>
             </div>
-            {modal && <ModalClient modal={setModal} />}
+            {modal && <ModalClient element={element} modal={setModal} />}
 
             <div className="infos">
               <p>

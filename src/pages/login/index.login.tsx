@@ -10,6 +10,8 @@ import { AxiosResponse } from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext/index.context";
 
 const loginSchema = z.object({
   email: z
@@ -29,6 +31,8 @@ const Login = () => {
     resolver: zodResolver(loginSchema),
   });
 
+  const { setToken } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const login = async (data: any) => {
@@ -37,13 +41,14 @@ const Login = () => {
         await api.post("/login", data);
       localStorage.setItem("token", request.data.token);
       localStorage.setItem("userId", request.data.user_id);
-
+      setToken(request.data.token);
       navigate("/dashboard");
     } catch (error: any) {
       console.log(error);
       toast.error(error.response.data?.message);
     }
   };
+
   return (
     <StyledLogin img={demo}>
       <div className="boxForm">

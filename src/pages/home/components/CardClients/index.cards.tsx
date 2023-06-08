@@ -3,7 +3,7 @@ import { AuthContext } from "../../../../context/authContext/index.context";
 import Iten from "./iten/index.iten";
 import StyleCardClient from "./style";
 import { useContext } from "react";
-import ModalCleintCreate from "../../../../components/ModalCleintCreat/index.modal";
+import ModalCleintCreate from "../../../../components/Modals/Clients/ModalCleintCreat/index.modal";
 
 const CardClients = () => {
   const { listClients, setModalEditCleint, modalEditCleint } =
@@ -12,7 +12,7 @@ const CardClients = () => {
   return (
     <>
       <div className="client">
-        <h3>Clients:</h3>
+        <h3>Clientes:</h3>
         <motion.button
           onClick={() =>
             setModalEditCleint((e) => Object({ open: !e.open, edit: true }))

@@ -12,6 +12,7 @@ const StyledNav = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   > div {
     display: flex;
     width: 80%;
@@ -21,6 +22,9 @@ const StyledNav = styled.div`
       width: 100px;
       background-color: var(--grey25);
       position: absolute;
+
+      display: flex;
+      flex-direction: column;
 
       border-radius: 5px;
 
