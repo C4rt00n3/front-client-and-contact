@@ -1,4 +1,3 @@
-import { z } from "zod";
 import iInput from "./intrface";
 
 const TextArea = ({
@@ -6,7 +5,6 @@ const TextArea = ({
   children,
   label,
   placeholder,
-  func,
   schema,
   name,
 }: iInput) => {
