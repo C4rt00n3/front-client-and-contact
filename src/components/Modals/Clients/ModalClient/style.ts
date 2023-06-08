@@ -28,7 +28,6 @@ const StyledModal = styled.div`
     gap: 20px;
   }
 
-  input,
   textarea {
     background-color: transparent;
     border-bottom: 1px solid var(--grey);
@@ -69,6 +68,15 @@ const StyledModal = styled.div`
   label {
     font-size: 12px;
   }
+
+  .loop {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    animation: rotate 2s linear infinite;
+  }
+
   input[type="file"] {
     display: none;
   }
@@ -85,10 +93,10 @@ const StyledModal = styled.div`
 
   .boxFile {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--withe);
+    border-bottom: 1px solid var(--grey);
 
     padding-bottom: 0.5rem;
 
