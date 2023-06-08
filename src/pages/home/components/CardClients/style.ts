@@ -162,14 +162,15 @@ const StyleCardClient = styled.ul`
 
     > ul {
       width: 95%;
-      margin-bottom: 60px;
+      margin-bottom: 200px;
 
       > li {
         display: flex;
         justify-content: space-between;
 
-        width: 60%;
+        width: 90%;
         max-width: 500px;
+
         > div {
           display: flex;
           gap: 0.6rem;

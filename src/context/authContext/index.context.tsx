@@ -89,9 +89,11 @@ const AuthProvider = ({ children }: iAuthProps) => {
           },
         });
 
-        console.log(requistion.data);
+        if (requistion.data.length > 0) {
+          return setListClients(requistion.data);
+        }
 
-        setListClients(requistion.data);
+        return;
       } catch (error: any) {
         console.log(error);
         toast.error(error.response.data?.message);
