@@ -76,7 +76,6 @@ const ModalCleintCreate = ({
     setLoad(true);
     if (file) {
       const img = await uplaod(file);
-      console.log(img);
       data.img_client_src = img;
     }
 
