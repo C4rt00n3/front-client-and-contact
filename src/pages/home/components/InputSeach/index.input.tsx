@@ -43,7 +43,9 @@ const InputSeach = () => {
   return (
     <StyleInputSeach>
       <input
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
         type="text"
         placeholder="Pesquisar cliente"
       />

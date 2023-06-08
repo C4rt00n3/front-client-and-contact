@@ -18,7 +18,9 @@ const StyledModal = styled.div`
   flex-direction: column;
 
   gap: 20px;
-
+  small {
+    text-align: center;
+  }
   > form {
     width: 80%;
 
@@ -28,7 +30,8 @@ const StyledModal = styled.div`
     gap: 20px;
   }
 
-  input {
+  input,
+  textarea {
     background-color: transparent;
     border-bottom: 1px solid var(--grey);
 
@@ -84,10 +87,10 @@ const StyledModal = styled.div`
 
   .boxFile {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--grey);
+    border-bottom: 1px solid var(--withe);
 
     padding-bottom: 0.5rem;
 

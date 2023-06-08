@@ -1,11 +1,15 @@
-import * as yup from "yup";
+import { NavigateFunction } from "react-router-dom";
 export interface iAuthProps {
   children: React.ReactNode;
 }
 import { z } from "zod";
 
 export interface iAuthExportProps {
+  modalImageUser: boolean;
+  setImageUser: React.Dispatch<React.SetStateAction<boolean>>;
+  get: () => Promise<boolean>;
   theme: boolean;
+  navigate: NavigateFunction;
   listClients: [] | iClients[];
   token: string | null;
   page: number;
@@ -23,6 +27,8 @@ export interface iAuthExportProps {
     open: boolean;
     edit: boolean;
   };
+  modalDelete: boolean;
+  setModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setModalEditCleint: React.Dispatch<
     React.SetStateAction<{
       open: boolean;
@@ -34,14 +40,14 @@ export interface iAuthExportProps {
     email: string;
     password: string;
     img_user_src?: string | undefined;
-  };
+  } | null;
   setUser: React.Dispatch<
     React.SetStateAction<{
       name: string;
       email: string;
       password: string;
       img_user_src?: string | undefined;
-    }>
+    } | null>
   >;
   setIdClient: React.Dispatch<React.SetStateAction<string>>;
   idClient: string;
@@ -76,7 +82,6 @@ export const contactSchema = z.object({
 export const contactSchemaedit = contactSchema.partial();
 
 export const clientEditSchema = z.object({
-  id: z.string().uuid().optional(),
   name: z.string().max(50).optional(),
   email: z.string().max(120).optional(),
   img_user_src: z.string().optional(),

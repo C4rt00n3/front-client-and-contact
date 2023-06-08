@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   iAuthExportProps,
   iAuthProps,
@@ -9,24 +9,27 @@ import {
 import { api } from "../../service";
 import { AxiosResponse } from "axios";
 import { UserType } from "../../pages/register/interfaces";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext({} as iAuthExportProps);
 
 const AuthProvider = ({ children }: iAuthProps) => {
   const auth = localStorage.getItem("token") || null;
-  const [user, setUser] = useState({} as UserType);
+  const [user, setUser] = useState<UserType | null>(null);
   const [modalEdit, setModalEdit] = useState(false);
   const [modalEditCleint, setModalEditCleint] = useState({
     open: false,
     edit: false,
   });
+  const [modalDelete, setModalDelete] = useState(false);
   const [contacts, setContacts] = useState<iContacts[] | []>([]);
   const [token, setToken] = useState(auth);
   const [theme, setTheme] = useState(false);
   const [page, setPage] = useState(1);
   const [idClient, setIdClient] = useState("");
+  const [modalImageUser, setImageUser] = useState(false);
   const [listClients, setListClients] = useState<iClients[] | []>([]);
-
   const remove = (uuid: string) => listClients.filter((e) => e.id !== uuid);
 
   const uplaod = async (e: File) => {
@@ -50,11 +53,61 @@ const AuthProvider = ({ children }: iAuthProps) => {
     }
   };
 
-  console.log(listClients);
+  const navigate = useNavigate();
+
+  const get = async () => {
+    const userId = localStorage.getItem("userId");
+    try {
+      const request: AxiosResponse<UserType> = await api.get(
+        "/user/" + userId,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setUser(request.data);
+      return true;
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data?.message);
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+
+    const findAll = async () => {
+      try {
+        const requistion = await api.get(`/client`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        console.log(requistion.data);
+
+        setListClients(requistion.data);
+      } catch (error: any) {
+        console.log(error);
+        toast.error(error.response.data?.message);
+      }
+    };
+
+    get();
+
+    findAll();
+  }, [page, token, setListClients, navigate]);
 
   return (
     <AuthContext.Provider
       value={{
+        get,
+        navigate,
         setIdClient,
         idClient,
         user,
@@ -75,6 +128,10 @@ const AuthProvider = ({ children }: iAuthProps) => {
         setListClients,
         contacts,
         setContacts,
+        modalImageUser,
+        setImageUser,
+        setModalDelete,
+        modalDelete,
       }}
     >
       {children}

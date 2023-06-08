@@ -55,13 +55,39 @@ const StyledModal = styled.div`
 
     button {
       background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > div {
+        max-height: 30px;
+        max-width: 30px;
+      }
     }
 
     svg {
       color: var(--withe);
 
-      width: 1.8rem;
-      height: 1.8rem;
+      min-width: 30px;
+      min-height: 30px;
+    }
+  }
+
+  .loop {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
     }
   }
 
@@ -119,5 +145,7 @@ export const StyledModalBox = styled.div`
   background-color: rgb(0, 0, 0, 0.8);
 
   bottom: 0;
+  > div {
+  }
 `;
 export default StyledModal;
