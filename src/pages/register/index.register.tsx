@@ -12,6 +12,7 @@ import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext/index.context";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -89,7 +90,7 @@ const Register = () => {
           </div>
           <Button type="submit">Cadastra-se</Button>
           <small>
-            Já tem uma conta? <a href="/login"> faça login!</a>
+            Já tem uma conta? <Link to="/login"> faça login!</Link>
           </small>
         </form>
       </div>

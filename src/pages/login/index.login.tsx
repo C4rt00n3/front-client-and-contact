@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext/index.context";
+import { Link } from "react-router-dom";
 
 const loginSchema = z.object({
   email: z
@@ -79,7 +80,8 @@ const Login = () => {
           </div>
           <Button type="submit">Submit</Button>
           <small>
-            Ainda não tem uma conta? <a href="/register"> Registre Agora!</a>
+            Ainda não tem uma conta?{" "}
+            <Link to="/register"> Registre Agora!</Link>
           </small>
         </form>
       </div>
