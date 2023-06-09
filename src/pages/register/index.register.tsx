@@ -10,9 +10,10 @@ import { api } from "../../service";
 import { toast } from "react-toastify";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext/index.context";
 import { Link } from "react-router-dom";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Register = () => {
   const {
@@ -23,18 +24,23 @@ const Register = () => {
     resolver: zodResolver(userExtend),
   });
   const { setUser } = useContext(AuthContext);
+  const [load, setLoad] = useState(false);
 
   const navigate = useNavigate();
 
   const post = async (data: any) => {
+    setLoad(true);
     try {
       const request: AxiosResponse<UserType> = await api.post("/user", data);
 
       setUser(request.data);
+      toast.success("Sucesso!");
       navigate("/login");
     } catch (error: any) {
       console.log(error);
       toast.error(error.response.data.message);
+    } finally {
+      setLoad(false);
     }
   };
 
@@ -88,7 +94,13 @@ const Register = () => {
             />
             <small>{errors.confirmPassword?.message?.toString()}</small>
           </div>
-          <Button type="submit">Cadastra-se</Button>
+          <Button type="submit">
+            {!load ? (
+              "Cadastra-se"
+            ) : (
+              <AiOutlineLoading3Quarters className="load" />
+            )}
+          </Button>
           <small>
             Já tem uma conta? <Link to="/login"> faça login!</Link>
           </small>

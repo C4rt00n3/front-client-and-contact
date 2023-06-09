@@ -6,6 +6,20 @@ const StyledLogin = styled.div<{ img: string }>`
 
   margin-left: 5%;
 
+  .load {
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
   input {
     background: none;
     height: 40px;

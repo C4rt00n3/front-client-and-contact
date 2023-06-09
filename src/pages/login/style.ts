@@ -57,6 +57,19 @@ const StyledLogin = styled.div<{ img: string }>`
     }
   }
 
+  .load {
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
   button {
     margin-top: 20px;
     margin-bottom: 15px;

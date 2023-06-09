@@ -10,9 +10,10 @@ import { AxiosResponse } from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext/index.context";
 import { Link } from "react-router-dom";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const loginSchema = z.object({
   email: z
@@ -31,22 +32,26 @@ const Login = () => {
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
-
+  const [load, setLoad] = useState(false);
   const { setToken } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   const login = async (data: any) => {
+    setLoad(true);
     try {
       const request: AxiosResponse<{ token: string; user_id: string }> =
         await api.post("/login", data);
       localStorage.setItem("token", request.data.token);
       localStorage.setItem("userId", request.data.user_id);
       setToken(request.data.token);
+      toast.success("Sucesso!");
       navigate("/dashboard");
     } catch (error: any) {
       console.log(error);
       toast.error(error.response.data?.message);
+    } finally {
+      setLoad(false);
     }
   };
 
@@ -78,7 +83,9 @@ const Login = () => {
             />
             <small>{errors.password?.message?.toString()}</small>
           </div>
-          <Button type="submit">Submit</Button>
+          <Button type="submit">
+            {!load ? "Submit" : <AiOutlineLoading3Quarters className="load" />}
+          </Button>
           <small>
             Ainda não tem uma conta?{" "}
             <Link to="/register"> Registre Agora!</Link>
